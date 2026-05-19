@@ -128,7 +128,7 @@ function renderSizePicker() {
 function renderSizes() {
   els.sizeList.replaceChildren();
   if (!state.sizes.length) {
-    els.sizeList.append(emptyNode("Add the ring sizes she actually keeps around."));
+    els.sizeList.append(emptyNode("Add the ring sizes you actually keep around."));
     return;
   }
 
@@ -193,7 +193,7 @@ function renderColorToggles(container, size) {
 function renderColors() {
   els.colorList.replaceChildren();
   if (!state.colors.length) {
-    els.colorList.append(emptyNode("Add the anodized, painted, or metal colors she likes."));
+    els.colorList.append(emptyNode("Add the anodized, painted, or metal colors you like."));
     return;
   }
 
