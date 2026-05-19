@@ -1,0 +1,9 @@
+{
+  "name": "Ring Palette",
+  "short_name": "Ring Palette",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f7f4ee",
+  "theme_color": "#0f172a",
+  "description": "A phone-friendly color combo helper for chainmaille ring sizes and color stashes."
+}

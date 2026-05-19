@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#0f172a">
+    <title>Ring Palette</title>
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">chainmaille color helper</p>
+          <h1>Ring Palette</h1>
+        </div>
+        <button class="icon-button" id="themeToggle" type="button" aria-label="Toggle theme" title="Toggle theme">
+          <span aria-hidden="true">◐</span>
+        </button>
+      </header>
+
+      <nav class="tabs" aria-label="App views">
+        <button class="tab is-active" type="button" data-view="build">Build</button>
+        <button class="tab" type="button" data-view="stash">Stash</button>
+        <button class="tab" type="button" data-view="saved">Saved</button>
+      </nav>
+
+      <section class="view is-active" id="buildView" aria-labelledby="buildTitle">
+        <div class="panel">
+          <div class="section-heading">
+            <h2 id="buildTitle">Weave setup</h2>
+            <button class="text-button" id="demoData" type="button">Load sample</button>
+          </div>
+
+          <label class="field-label" for="weaveName">Weave or project name</label>
+          <input id="weaveName" class="input" type="text" placeholder="Byzantine bracelet, dice bag trim...">
+
+          <div class="split-fields">
+            <label class="field-block" for="colorCount">
+              <span class="field-label">Colors in combo</span>
+              <input id="colorCount" class="input" type="number" min="1" max="8" value="3">
+            </label>
+            <label class="field-block" for="patternStyle">
+              <span class="field-label">Style</span>
+              <select id="patternStyle" class="input">
+                <option value="balanced">Balanced</option>
+                <option value="bold">High contrast</option>
+                <option value="soft">Soft blend</option>
+                <option value="surprise">Surprise me</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="section-heading compact">
+            <h3>Ring sizes needed</h3>
+            <button class="text-button" id="selectAllSizes" type="button">All</button>
+          </div>
+          <div class="chips" id="sizePicker" aria-label="Ring sizes"></div>
+        </div>
+
+        <section class="combo-card" aria-live="polite">
+          <div class="combo-top">
+            <div>
+              <p class="eyebrow">generated combo</p>
+              <h2 id="comboTitle">Pick sizes and colors</h2>
+            </div>
+            <button class="primary-button" id="generateCombo" type="button">Generate</button>
+          </div>
+          <div class="palette-strip" id="paletteStrip"></div>
+          <div class="assignment-list" id="assignmentList"></div>
+          <div class="combo-actions">
+            <button class="secondary-button" id="copyCombo" type="button">Copy</button>
+            <button class="secondary-button" id="saveCombo" type="button">Save</button>
+          </div>
+        </section>
+      </section>
+
+      <section class="view" id="stashView" aria-labelledby="stashTitle">
+        <div class="panel">
+          <div class="section-heading">
+            <h2 id="stashTitle">Ring sizes</h2>
+            <button class="text-button" id="addSize" type="button">Add size</button>
+          </div>
+          <div class="row-form">
+            <input id="sizeName" class="input" type="text" placeholder="18g 5/32, 16g 1/4...">
+            <input id="sizeNote" class="input" type="text" placeholder="Optional note">
+          </div>
+          <div class="item-list" id="sizeList"></div>
+        </div>
+
+        <div class="panel">
+          <div class="section-heading">
+            <h2>Colors</h2>
+            <button class="text-button" id="addColor" type="button">Add color</button>
+          </div>
+          <div class="row-form color-form">
+            <input id="colorName" class="input" type="text" placeholder="Peacock blue, matte black...">
+            <input id="colorHex" class="color-input" type="color" value="#2f80ed" aria-label="Color value">
+          </div>
+          <div class="item-list" id="colorList"></div>
+        </div>
+      </section>
+
+      <section class="view" id="savedView" aria-labelledby="savedTitle">
+        <div class="panel">
+          <div class="section-heading">
+            <h2 id="savedTitle">Saved combos</h2>
+            <button class="text-button" id="clearSaved" type="button">Clear</button>
+          </div>
+          <div class="item-list saved-list" id="savedList"></div>
+        </div>
+      </section>
+    </main>
+
+    <template id="emptyTemplate">
+      <div class="empty-state">
+        <strong>Nothing here yet.</strong>
+        <span>Add a few ring sizes and colors to get started.</span>
+      </div>
+    </template>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
